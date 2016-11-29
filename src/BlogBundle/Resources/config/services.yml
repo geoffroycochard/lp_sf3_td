@@ -1,0 +1,4 @@
+services:
+    blog.slugifier.provider:
+        class: BlogBundle\Provider\SlugifierProvider
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

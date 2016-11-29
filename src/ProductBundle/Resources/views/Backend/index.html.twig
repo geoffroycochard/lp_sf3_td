@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ProductBundle:Backend:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Backend:index page</h1>
+
+    <p><a href="{{ path('backend_product_create') }}">Création de produit</a></p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>title</th>
+            <th>abstract</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.abstract }}</td>
+                <td><a href="{{ path('backend_product_show', {product: product.id}) }}">voir</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

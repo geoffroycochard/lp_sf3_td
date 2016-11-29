@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ProductBundle:Backend:show{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Backend:show page</h1>
+
+    {% for flash_message in app.session.flashBag.get('notice') %}
+    <p class="flash-notice">
+        <strong>{{ flash_message }}</strong>
+    </p>
+    {% endfor %}
+
+    <p><a href="{{ path('backend_product_create') }}">Création de produit</a></p>
+
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.abstract }}</p>
+    <p>{{ product.description}}</p>
+
+    <h3>Categories</h3>
+    <ul>
+        {% for category in product.categories %}
+            <li>{{ category.title }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Variations</h3>
+    <ul>
+        {% for variation in product.variations %}
+            <li>{{ variation.title }} : {{ variation.price }}</li>
+        {% endfor %}
+    </ul>
+    
+    <p><a href="{{ path('backend_product_index') }}">Retour</a></p>
+{% endblock %}

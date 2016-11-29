@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}List de mes produits - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Product:list page</h1>
+
+    <ul>
+    {% for product in products %}
+        <li>{{ product.title }} - {{ product.id }} -
+            <a href="{{ path('product_single', {id: product.id }) }}">Voir produit</a>
+            </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

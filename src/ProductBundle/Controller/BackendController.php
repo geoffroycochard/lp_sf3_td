@@ -48,11 +48,12 @@ class BackendController extends Controller
         $product->setDescription(sprintf('Produit description %s', $vp));
 
         // Attach to new categories or not ...
+        $current = [];
         for ($i = 0; $i < 3; $i++) {
             $vc = rand(0,5);
             $title = sprintf('Category %s', $vc);
             $category = $this->getDoctrine()->getRepository('ProductBundle:Category')->findOneBy(['title' => $title]);
-            if(!$category) {
+            if(!$category && !in_array($title, $current)) {
                 $category = new Category();
                 $category->setTitle($title);
                 $this->addFlash('notice', sprintf('Nouvelle catégorie %s', $category->getTitle()));
@@ -60,6 +61,7 @@ class BackendController extends Controller
             if (!$product->getCategories()->contains($category)) {
                 $product->addCategory($category);
             }
+            $current[] = $title;
         }
 
         // Add variations
@@ -85,7 +87,7 @@ class BackendController extends Controller
 
     /**
      * @Route("/show/{product}", name="backend_product_show")
-     * @param Product $product
+     * @param Product $product@
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Product $product)

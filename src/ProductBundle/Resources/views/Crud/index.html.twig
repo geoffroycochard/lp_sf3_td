@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ProductBundle:Crud:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Crud:index page</h1>
+
+    <p><a href="{{ path('product_crud_create') }}">Ajout d'un produit</a></p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>
+                    <a href="{{ path('product_crud_show', { product: product.id }) }}">voir</a> -
+                    <a href="{{ path('product_crud_update', { product: product.id }) }}">edit</a> -
+                    <a href="{{ path('product_crud_delete', { product: product.id }) }}">delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

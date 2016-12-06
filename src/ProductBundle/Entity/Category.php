@@ -3,6 +3,7 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
@@ -25,6 +26,8 @@ class Category
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="6", max="255")
      */
     private $title;
 
@@ -41,6 +44,11 @@ class Category
     public function __construct()
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 
     /**

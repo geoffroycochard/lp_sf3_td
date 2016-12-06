@@ -3,6 +3,7 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Variation
@@ -25,6 +26,8 @@ class Variation
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="6", max="255")
      */
     private $title;
 

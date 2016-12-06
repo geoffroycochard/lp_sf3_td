@@ -57,6 +57,15 @@ class Product
     private $variations;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->variations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Get id
      *
      * @return int
@@ -136,14 +145,6 @@ class Product
     public function getDescription()
     {
         return $this->description;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->variations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

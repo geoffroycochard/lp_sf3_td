@@ -35,6 +35,13 @@ class Category
      */
     private $products;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -68,13 +75,6 @@ class Category
     public function getTitle()
     {
         return $this->title;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

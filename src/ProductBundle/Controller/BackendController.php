@@ -36,7 +36,7 @@ class BackendController extends Controller
         // Generate Product
         $vp = rand(0,100);
         $title = sprintf('Produit %s', $vp);
-        
+
         if ($product = $this->getDoctrine()->getRepository('ProductBundle:Product')->findOneBy(['title' => $title])) {
             $this->addFlash('notice', sprintf('Produit existant %s', $product->getTitle()));
             return $this->redirectToRoute('backend_product_show', ['product' => $product->getId()]);

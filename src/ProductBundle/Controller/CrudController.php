@@ -3,6 +3,7 @@
 namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\Product;
+use ProductBundle\Entity\Variation;
 use ProductBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,6 +36,10 @@ class CrudController extends Controller
     public function createAction(Request $request)
     {
         $product = new Product();
+        $variation = new Variation();
+        $variation->setProduct($product);
+        $product->addVariation($variation);
+
         $form = $this->createForm(ProductType::class, $product, array());
 
         $form->handleRequest($request);
@@ -55,6 +60,7 @@ class CrudController extends Controller
      */
     public function updateAction(Product $product, Request $request)
     {
+        
         $form = $this->createForm(ProductType::class, $product, array());
 
         $form->handleRequest($request);

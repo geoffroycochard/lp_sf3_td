@@ -70,6 +70,11 @@ class Product
         $this->variations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     /**
      * Get id
      *

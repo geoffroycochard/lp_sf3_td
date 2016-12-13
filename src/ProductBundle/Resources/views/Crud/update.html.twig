@@ -6,7 +6,25 @@
 <h1>Welcome to the Crud:update page</h1>
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.abstract) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.categories) }}
+
+    {{ form_label(form.variations) }}
+    {{ form_errors(form.variations) }}
+
+    <ul id="variations" data-prototype="{{ form_widget(form.variations.vars.prototype)|e }}">
+        {% for variation in form.variations %}
+            <li>
+                {{ form_errors(variation) }}
+                {{ form_widget(variation) }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="#" id="add-another-variation">Add another variation</a>
 
     <input type="submit" />
     {{ form_end(form) }}

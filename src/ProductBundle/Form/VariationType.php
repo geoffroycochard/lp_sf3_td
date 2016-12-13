@@ -13,7 +13,7 @@ class VariationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('price')->add('product')        ;
+        $builder->add('title')->add('price');
     }
     
     /**

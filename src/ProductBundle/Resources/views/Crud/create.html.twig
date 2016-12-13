@@ -6,7 +6,23 @@
 <h1>Welcome to the Crud:create product</h1>
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    {{ form_widget(form.title) }}
+    {{ form_widget(form.abstract) }}
+    {{ form_widget(form.description) }}
+    {{ form_widget(form.categories) }}
+
+    {{ form_label(form.variations) }}
+    {{ form_errors(form.variations) }}
+
+    <ul>
+    {% for variation in form.variations %}
+        <li>
+        {{ form_errors(variation) }}
+        {{ form_widget(variation) }}
+        </li>
+    {% endfor %}
+    </ul>
 
     <input type="submit" />
     {{ form_end(form) }}

@@ -23,7 +23,7 @@ class CrudController extends Controller
      */
     public function indexAction()
     {
-        $products = $this->getDoctrine()->getRepository('ProductBundle:Product')->find(12);
+        $products = $this->getDoctrine()->getRepository('ProductBundle:Product')->findAll();
 
         return $this->render('ProductBundle:Crud:index.html.twig', array(
             'products' => $products
@@ -60,7 +60,7 @@ class CrudController extends Controller
      */
     public function updateAction(Product $product, Request $request)
     {
-        
+
         $form = $this->createForm(ProductType::class, $product, array());
 
         $form->handleRequest($request);

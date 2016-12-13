@@ -14,7 +14,11 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('abstract')->add('description')->add('categories')        ;
+        $builder
+            ->add('title')
+            ->add('abstract')
+            ->add('description')
+            ->add('categories')        ;
 
         $builder->add('variations', CollectionType::class, array(
             'entry_type' => VariationType::class,

@@ -23,7 +23,7 @@ class CrudController extends Controller
      */
     public function indexAction()
     {
-        $products = $this->getDoctrine()->getRepository('ProductBundle:Product')->findAll();
+        $products = $this->getDoctrine()->getRepository('ProductBundle:Product')->find(12);
 
         return $this->render('ProductBundle:Crud:index.html.twig', array(
             'products' => $products
